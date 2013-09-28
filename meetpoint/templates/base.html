@@ -1,14 +1,9 @@
-<!doctype html>
+<!doctype html>{% load gears %}
 <html lang="ru">
 <head>
   <meta charset="utf-8">
   <title>{{ site.name }}</title>
   <meta name="viewport" content="width=device-width">
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ STATIC_URL }}images/favicon/apple-touch-icon-144-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ STATIC_URL }}images/favicon/apple-touch-icon-114-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ STATIC_URL }}images/favicon/apple-touch-icon-72-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" href="{{ STATIC_URL }}images/favicon/apple-touch-icon-57-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" href="{{ STATIC_URL }}images/favicon/apple-touch-icon-precomposed.png">
   <link rel="shortcut icon" href="{{ STATIC_URL }}images/favicon/favicon.ico">
   <meta name="keywords" content="{{ metadata.keywords }}">
   <meta name="description" content="{{ metadata.description }}">
@@ -22,16 +17,19 @@
   <![endif]-->
 </head>
 <body>
-          <a class="nav-link" href="{% url 'socialauth_begin' 'foursquare' %}" target="_self">FS</a><br>
-          {% for friend in friends %}
-            {{ friend.firstName }} {{ friend.lastName }}
-            <img alt="" src="{{ friend.photo.prefix }}36x36{{ friend.photo.suffix }}"><br>
-          {% endfor %}
-
-
-
+ <a class="nav-link" href="{% url 'socialauth_begin' 'foursquare' %}" target="_self">FS</a><br>
+ {% for friend in friends %}
+    <a href="{% url 'venues_view' friend.id %}">
+     {{ friend.firstName }} {{ friend.lastName }}
+     <img alt="" src="{{ friend.photo.prefix }}36x36{{ friend.photo.suffix }}"><br>
+   </a>
+ {% endfor %}
+ <div id="map"></div>
+ <div id='status'></div>
 
   <script type="text/javascript" src="http://yandex.st/jquery/1.9.1/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script type="text/javascript" src="{{ STATIC_URL }}js/libs/jquery-1.9.1.js"><\/script>')</script>
+  {% js_asset_tag "js/script.js" %}
+
 </body>
 </html>
