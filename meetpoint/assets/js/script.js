@@ -5,10 +5,6 @@
 
 $(document).ready(function(){
 
-  // function record_coords(lat, lng) {
-
-  // }
-
   map = new GMaps({
     div: '#map',
     lat: -12.043333,
@@ -42,5 +38,21 @@ $(document).ready(function(){
       alert("Your browser does not support geolocation");
     },
   });
+
+  function create_ajax_form(block){
+    $('.friend').click(function(){
+      alert("assad");
+      $.ajax({
+        type: "POST",
+        url: $(this).attr('href'),
+        success: function(data){
+          $(block).html(data);
+          create_ajax_form(block);
+        }
+      });
+      return false;
+    });
+  }
+  create_ajax_form('.block_main');
 
 });

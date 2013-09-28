@@ -70,15 +70,12 @@ class VenueView(TemplateView, SocialUserMixin):
 
     template_name = 'core/venues.html'
 
-    def get(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         self.get_access_token(request.user)
         return super(VenueView, self).get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super(VenueView, self).get_context_data(**kwargs)
-        # pk = self.kwargs['pk']
-        # friend = get_object_or_none(Profile, fs_pk=pk)
-        # context['friend'] = friend
         context['venues'] = self.get_venues()
         return context
 

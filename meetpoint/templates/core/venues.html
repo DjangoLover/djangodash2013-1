@@ -1,0 +1,7 @@
+<div>
+Координаты пользователя обновлялись {{ friend.last_update }}<br>
+</div>
+<div style="display:none;" data-lat='{{ friend.lat }}' data-lng='{{ friend.lng }}'></div>
+{% for venue in venues %}
+  {{ venue.name }}<br>
+{% endfor %}

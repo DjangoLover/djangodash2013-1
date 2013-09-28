@@ -18,12 +18,14 @@
 </head>
 <body>
  <a class="nav-link" href="{% url 'socialauth_begin' 'foursquare' %}" target="_self">FS</a><br>
- {% for friend in friends %}
-    <a href="{% url 'venues_view' friend.id %}">
-     {{ friend.firstName }} {{ friend.lastName }}
-     <img alt="" src="{{ friend.photo.prefix }}36x36{{ friend.photo.suffix }}"><br>
-   </a>
- {% endfor %}
+ <div class="block_main">
+   {% for friend in friends %}
+      <a href="{% url 'venues_view' friend.id %}" class="friend">
+       {{ friend.firstName }} {{ friend.lastName }}
+       <img src="{{ friend.photo.prefix }}36x36{{ friend.photo.suffix }}"><br>
+     </a>
+   {% endfor %}
+ </div>
  <div id="map"></div>
  <div id='status'></div>
 
