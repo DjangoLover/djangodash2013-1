@@ -1,5 +1,6 @@
 from django.views.generic import TemplateView
 from django.core.cache import cache
+from django.http import HttpResponse
 
 from social_auth.models import UserSocialAuth
 
@@ -50,6 +51,7 @@ class FriendListView(TemplateView, SocialUserMixin):
 
         if access_token is None and social_user:
             if social_user.extra_data:
+                print social_user.extra_data
                 access_token = social_user.extra_data.get('access_token')
                 expires = social_user.extra_data.get('expires')
 
@@ -64,3 +66,18 @@ class FriendListView(TemplateView, SocialUserMixin):
             friends = client.users.friends()
             return friends['friends']['items']
         return None
+
+
+def update_profile(request):
+    lat = request.POST.get('lat', False)
+    lng = request.POST.get('lng', False)
+    if lat and lng and request.user.is_authenticated:
+        request.user.latitude = lat
+        request.user.longitude = lng
+        request.user.save()
+    return HttpResponse('')
+
+
+def get_venues(request, pk):
+    pass
+    return HttpResponse('')
