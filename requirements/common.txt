@@ -1,0 +1,12 @@
+# This file describes the distributions required to run this project
+# in all envorinments.
+# See http://pip-installer.org/requirement-format.html for details.
+
+Django==1.5.4
+South==0.7.6
+django-sitesutils==0.1.2
+django-gears==0.5
+Gears==0.6
+gears-less==0.3.1
+gears-uglifyjs==0.1.1
+gears-clean-css==0.1.2

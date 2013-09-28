@@ -33,3 +33,7 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+meetpoint/public/
+meetpoint/static/
+meetpoint/sqlite3.db
