@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>{{ site.name }}</title>
+  <meta name="viewport" content="width=device-width">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ STATIC_URL }}images/favicon/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ STATIC_URL }}images/favicon/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ STATIC_URL }}images/favicon/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="{{ STATIC_URL }}images/favicon/apple-touch-icon-57-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="{{ STATIC_URL }}images/favicon/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="{{ STATIC_URL }}images/favicon/favicon.ico">
+  <meta name="keywords" content="{{ metadata.keywords }}">
+  <meta name="description" content="{{ metadata.description }}">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="{{ STATIC_URL }}js/libs/modernizr-2.6.2.min.js"></script>
+  <!--[if lt IE 7]>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/libs/ie6no.ru.js"></script>
+  <![endif]-->
+  <!--[if IE]>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/ie/ie.css">
+  <![endif]-->
+</head>
+<body>
+          <a class="nav-link" href="{% url 'socialauth_begin' 'foursquare' %}" target="_self">FS</a><br>
+          {% for friend in friends %}
+            {{ friend.firstName }} {{ friend.lastName }}
+            <img alt="" src="{{ friend.photo.prefix }}36x36{{ friend.photo.suffix }}"><br>
+          {% endfor %}
+
+
+
+
+  <script type="text/javascript" src="http://yandex.st/jquery/1.9.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script type="text/javascript" src="{{ STATIC_URL }}js/libs/jquery-1.9.1.js"><\/script>')</script>
+</body>
+</html>
