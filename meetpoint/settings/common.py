@@ -108,6 +108,14 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.contrib.foursquare.FoursquareBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+FOURSQUARE_CONSUMER_KEY = 'KTGUXWXERPLJVNPMPNYETRLBP4302KG2XSAWPFYKKMNO3RSY'
+FOURSQUARE_CONSUMER_SECRET = 'OWZCDVTG1X3BEVDBYMMPOTBURRRP3ENU1SIQDMH1VLCE2TGI'
+
 ROOT_URLCONF = 'meetpoint.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
@@ -129,6 +137,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'south',
     'django_gears',
+    'social_auth',
 )
 
 # A sample logging configuration. The only tangible logging
