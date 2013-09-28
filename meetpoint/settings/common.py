@@ -117,6 +117,7 @@ FOURSQUARE_CONSUMER_KEY = 'KTGUXWXERPLJVNPMPNYETRLBP4302KG2XSAWPFYKKMNO3RSY'
 FOURSQUARE_CONSUMER_SECRET = 'OWZCDVTG1X3BEVDBYMMPOTBURRRP3ENU1SIQDMH1VLCE2TGI'
 
 LOGIN_REDIRECT_URL = '/start/'
+SOCIAL_AUTH_USER_MODEL = 'profile.Profile'
 
 ROOT_URLCONF = 'meetpoint.urls'
 
@@ -138,6 +139,7 @@ INSTALLED_APPS = (
     'south',
     'django_gears',
     'social_auth',
+    'profile',
 )
 
 # A sample logging configuration. The only tangible logging
