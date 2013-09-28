@@ -12,3 +12,4 @@ Gears==0.6
 gears-less==0.3.1
 gears-uglifyjs==0.1.1
 gears-clean-css==0.1.2
+foursquare==20130707
