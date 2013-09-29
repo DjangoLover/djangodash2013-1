@@ -88,9 +88,11 @@ class VenueView(TemplateView, SocialUserMixin):
         user_lng = self.request.POST.get('lng', False)
         friend_pk = self.kwargs['pk']
         self.friend = get_object_or_none(Profile, fs_id=friend_pk)
-        if self.friend:
-            friend_lat = self.friend.latitude
-            friend_lng = self.friend.longitude
+        if self.friend and user_lat and user_lng:
+            user_lat = float(user_lat)
+            user_lng = float(user_lng)
+            friend_lat = float(self.friend.latitude)
+            friend_lng = float(self.friend.longitude)
             center_lat = ((friend_lat - user_lat) / 2) + min(friend_lat, user_lat)
             center_lng = ((friend_lng - user_lng) / 2) + min(friend_lng, user_lng)
             return [center_lat, center_lng]
