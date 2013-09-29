@@ -9,6 +9,7 @@ from .shortcuts import get_object_or_none
 from profile.models import Profile
 
 import foursquare
+import math
 
 
 class SocialUserMixin(object):
@@ -67,7 +68,8 @@ class VenueView(TemplateView, SocialUserMixin):
 
     def get_context_data(self, **kwargs):
         context = super(VenueView, self).get_context_data(**kwargs)
-        context['venues'] = self.get_venues()
+        venues = self.get_venues()
+        context['venue'] = self.sort_venue(venues)
         context['friend'] = self.friend
         context['last_update'] = self.prepare_date_list(self.friend)
         return context
@@ -85,7 +87,18 @@ class VenueView(TemplateView, SocialUserMixin):
                 for venue, data in venues.items():
                     if data.get('beenHere', None):
                         del venues[venue]
-            return venues['venues'][:1]
+            return venues['venues']
+        return None
+
+    def sort_venue(self, data):
+        if data:
+            d = dict()
+            for number, item in enumerate(data):
+                d[item['location']['distance']] = number
+            keylist = d.keys()
+            keylist.sort()
+            number = d[keylist[0]]
+            return data[number]
         return None
 
     def get_center(self):
@@ -99,8 +112,8 @@ class VenueView(TemplateView, SocialUserMixin):
             friend_lat = float(self.friend.latitude)
             friend_lng = float(self.friend.longitude)
             if user_lat != friend_lat and user_lng != friend_lng:
-                center_lat = ((friend_lat - user_lat) / 2) + min(friend_lat, user_lat)
-                center_lng = ((friend_lng - user_lng) / 2) + min(friend_lng, user_lng)
+                center_lat = (math.fabs(friend_lat - user_lat) / 2) + min(friend_lat, user_lat)
+                center_lng = (math.fabs(friend_lng - user_lng) / 2) + min(friend_lng, user_lng)
                 return [center_lat, center_lng]
         return None
 
