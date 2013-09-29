@@ -19,8 +19,8 @@ $(document).ready(function(){
 
   map = new GMaps({
     div: '#map',
-    lat: -12.043333,
-    lng: -77.028333,
+    lat: 59.214652,
+    lng: 39.872766,
     height: '400px',
     zoom: 15,
     zoomControlOptions: {
