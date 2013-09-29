@@ -2,7 +2,6 @@
 //= require plugins/html5shiv
 //= require plugins/less-1.3.3.min
 //= require plugins/gmaps
-//= require plugins/gmapi
 //= require plugins/moment.min
 //= require plugins/moment-timezone.min
 //= require plugins/moment-timezone-data
