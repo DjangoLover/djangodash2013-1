@@ -36,6 +36,7 @@ $(document).ready(function(){
         lat: position.coords.latitude,
         lng: position.coords.longitude,
         draggable: true,
+        clickable: true
       });
       $("#status").load('/record/', {
         lat: position.coords.latitude,
@@ -62,7 +63,14 @@ $(document).ready(function(){
       url: $(this).attr('href'),
       success: function(data){
         $('.block_main').html(data);
+        $friend = $('.block_main .friend_coords');
         local_time();
+        map.addMarker({
+          lat: $friend.data("lat"),
+          lng: $friend.data("lng"),
+          draggable: true,
+          clickable: true
+        });
       }
     });
     return false;
