@@ -4,38 +4,16 @@ from django.http import HttpResponse
 
 from social_auth.models import UserSocialAuth
 
-from .shortcuts import get_object_or_none
+# from .shortcuts import get_object_or_none
 
-from profile.models import Profile
+# from profile.models import Profile
 
 import foursquare
 
 
 class SocialUserMixin(object):
 
-    foursquare = None
-
-    def get_social_user(self, provider):
-        social_user = get_object_or_none(UserSocialAuth,
-                                         user=self.request.user.id,
-                                         provider=provider)
-        if social_user:
-            return social_user.extra_data.get('nickname', None)
-        return None
-
-
-class FriendView(TemplateView, SocialUserMixin):
-
-    template_name = 'base.html'
-
-    def get(self, request, *args, **kwargs):
-        self.get_access_token(request.user)
-        return super(FriendView, self).get(request, *args, **kwargs)
-
-    def get_context_data(self, **kwargs):
-        context = super(FriendView, self).get_context_data(**kwargs)
-        context['friends'] = self.get_friends()
-        return context
+    token = None
 
     def get_access_token(self, user):
         key = str(user.id)
@@ -58,6 +36,20 @@ class FriendView(TemplateView, SocialUserMixin):
                           int(expires) if expires is not None else 0)
         self.token = access_token
 
+
+class FriendView(TemplateView, SocialUserMixin):
+
+    template_name = 'base.html'
+
+    def get(self, request, *args, **kwargs):
+        self.get_access_token(request.user)
+        return super(FriendView, self).get(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(FriendView, self).get_context_data(**kwargs)
+        context['friends'] = self.get_friends()
+        return context
+
     def get_friends(self):
         if self.token:
             client = foursquare.Foursquare(access_token=self.token)
@@ -79,25 +71,25 @@ class VenueView(TemplateView, SocialUserMixin):
         context['venues'] = self.get_venues()
         return context
 
-    def get_access_token(self, user):
-        key = str(user.id)
-        access_token = cache.get(key)
+    # def get_access_token(self, user):
+    #     key = str(user.id)
+    #     access_token = cache.get(key)
 
-        try:
-            social_user = user.social_user if hasattr(user, 'social_user') \
-                else UserSocialAuth.objects.get(user=user.id,
-                                                provider='foursquare')
-        except UserSocialAuth.DoesNotExist:
-            social_user = None
+    #     try:
+    #         social_user = user.social_user if hasattr(user, 'social_user') \
+    #             else UserSocialAuth.objects.get(user=user.id,
+    #                                             provider='foursquare')
+    #     except UserSocialAuth.DoesNotExist:
+    #         social_user = None
 
-        if access_token is None and social_user:
-            if social_user.extra_data:
-                access_token = social_user.extra_data.get('access_token')
-                expires = social_user.extra_data.get('expires')
+    #     if access_token is None and social_user:
+    #         if social_user.extra_data:
+    #             access_token = social_user.extra_data.get('access_token')
+    #             expires = social_user.extra_data.get('expires')
 
-                cache.set(key, access_token,
-                          int(expires) if expires is not None else 0)
-        self.token = access_token
+    #             cache.set(key, access_token,
+    #                       int(expires) if expires is not None else 0)
+    #     self.token = access_token
 
     def get_venues(self):
         coords = "{0},{1}".format(self.request.user.latitude,
