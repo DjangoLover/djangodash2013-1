@@ -4,11 +4,11 @@ from .common import *
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'project',
+        'NAME': 'meetpoint',
     }
 }
 
-PUBLIC_ROOT = os.path.join(os.sep, 'var', 'www', 'project', 'public')
+PUBLIC_ROOT = os.path.join(os.sep, 'var', 'www', 'meetpoint', 'public')
 STATIC_ROOT = os.path.join(PUBLIC_ROOT, 'static')
 MEDIA_ROOT = os.path.join(PUBLIC_ROOT, 'media')
 
@@ -18,4 +18,4 @@ TEMPLATE_LOADERS = (
 
 ALLOWED_HOSTS = ['192.241.166.76']
 
-PREPEND_WWW = True
+PREPEND_WWW = False
