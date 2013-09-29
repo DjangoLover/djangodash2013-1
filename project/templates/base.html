@@ -43,10 +43,7 @@
             <div class="nav-collapse collapse navbar-responsive-collapse">
               <ul class="nav">
                 <li {% block meetfriend %}class="active"{% endblock %}>
-                  <a href="{% url 'start_view' %}">Meet with friends</a>
-                </li>
-                <li {% block howto %}{% endblock %}>
-                  <a href="{% url 'how_view' %}">How to use?</a>
+                  <a href="{% url 'start_view' %}">Meet your friend</a>
                 </li>
               </ul>
               <ul class="nav pull-right">
@@ -82,7 +79,7 @@
       <div class="row">
         {% if not user.is_authenticated %}
           <div class="text-center">
-            <h2>Login to choose a friend you want to meet with</h2>
+            <h2><a href="{% url 'socialauth_begin' 'foursquare' %}">Login</a> to choose a friend you want to meet with</h2>
           </div>
         {% else %}
         <div class="login-form">
