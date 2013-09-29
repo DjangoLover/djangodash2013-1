@@ -18,6 +18,7 @@
 </head>
 <body>
  <a class="nav-link" href="{% url 'socialauth_begin' 'foursquare' %}" target="_self">FS</a><br>
+ <a class="nav-link" href="{% url 'auth_logout' %}" target="_self">logout</a><br>
  <div class="block_main">
    {% for friend in friends %}
       <a href="{% url 'venues_view' friend.id %}" class="friend">

@@ -1,6 +1,6 @@
+//= require libs/csrf.js
 //= require plugins/gmapi.js
 //= require plugins/gmaps.js
-//= require libs/csrf.js
 //= require_self
 
 $(document).ready(function(){

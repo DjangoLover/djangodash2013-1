@@ -68,13 +68,14 @@ class VenueView(TemplateView, SocialUserMixin):
     def get_context_data(self, **kwargs):
         context = super(VenueView, self).get_context_data(**kwargs)
         context['venues'] = self.get_venues()
+        context['friend'] = self.friend
         return context
 
     def get_venues(self):
         friend_pk = self.kwargs['pk']
-        friend = get_object_or_none(Profile, fs_id=friend_pk)
-        if friend:
-            coords = "{0},{1}".format(friend.lat, friend.lng)
+        self.friend = get_object_or_none(Profile, fs_id=friend_pk)
+        if self.friend:
+            coords = "{0},{1}".format(self.friend.latitude, self.friend.longitude)
             print coords
         user_lat = self.request.POST.get('lat', False)
         user_lng = self.request.POST.get('lng', False)

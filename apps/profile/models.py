@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractUser
 
 class Profile(AbstractUser):
 
-    last_update = models.DateField(
+    last_update = models.DateTimeField(
         auto_now=True
     )
     latitude = models.DecimalField(
@@ -20,6 +20,7 @@ class Profile(AbstractUser):
         null=True
     )
     fs_id = models.PositiveIntegerField(
+        verbose_name='foursquare id',
         blank=True,
         null=True
     )
