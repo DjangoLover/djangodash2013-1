@@ -22,7 +22,7 @@ $(document).ready(function(){
     lat: -12.043333,
     lng: -77.028333,
     height: '400px',
-    zoom: 10
+    zoom: 12
   });
 
   map.addMarker({
