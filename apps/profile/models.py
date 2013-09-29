@@ -14,7 +14,7 @@ class Profile(AbstractUser):
         null=True
     )
     longitude = models.DecimalField(
-        max_digits=8,
+        max_digits=9,
         decimal_places=6,
         blank=True,
         null=True
