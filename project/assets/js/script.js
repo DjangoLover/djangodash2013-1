@@ -22,7 +22,10 @@ $(document).ready(function(){
     lat: -12.043333,
     lng: -77.028333,
     height: '400px',
-    zoom: 12
+    zoom: 15,
+    zoomControlOptions: {
+      style: google.maps.ZoomControlStyle.SMALL
+    },
   });
 
   map.addMarker({
@@ -39,6 +42,7 @@ $(document).ready(function(){
         lat: position.coords.latitude,
         lng: position.coords.longitude,
         draggable: true,
+        title: 'You'
       });
       $("#status").load('/record/', {
         lat: position.coords.latitude,
@@ -72,12 +76,15 @@ $(document).ready(function(){
         map.addMarker({
           lat: $friend.data("lat"),
           lng: $friend.data("lng"),
+          title: 'Your friend'
         });
         map.addMarker({
           lat: $venue.data("lat"),
           lng: $venue.data("lng"),
-          icon: $image
+          icon: $image,
+          title: 'Meet point'
         });
+        map.fitZoom();
       }
     });
     return false;
