@@ -34,6 +34,6 @@ nosetests.xml
 .project
 .pydevproject
 
-meetpoint/public/
-meetpoint/static/
-meetpoint/sqlite3.db
+project/public/
+project/static/
+project/sqlite3.db
