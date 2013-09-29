@@ -4,9 +4,9 @@ from django.http import HttpResponse
 
 from social_auth.models import UserSocialAuth
 
-# from .shortcuts import get_object_or_none
+from .shortcuts import get_object_or_none
 
-# from profile.models import Profile
+from profile.models import Profile
 
 import foursquare
 
@@ -71,10 +71,15 @@ class VenueView(TemplateView, SocialUserMixin):
         return context
 
     def get_venues(self):
-        lat = self.request.POST.get('lat', False)
-        lng = self.request.POST.get('lng', False)
-        if lat and lng and self.token:
-            coords = "{0},{1}".format(lat, lng)
+        friend_pk = self.kwargs['pk']
+        friend = get_object_or_none(Profile, fs_id=friend_pk)
+        if friend:
+            coords = "{0},{1}".format(friend.lat, friend.lng)
+            print coords
+        user_lat = self.request.POST.get('lat', False)
+        user_lng = self.request.POST.get('lng', False)
+        if user_lat and user_lng and self.token:
+            coords = "{0},{1}".format(user_lat, user_lng)
             client = foursquare.Foursquare(access_token=self.token)
             venues = client.venues.search(params={
                                           'll': coords,
