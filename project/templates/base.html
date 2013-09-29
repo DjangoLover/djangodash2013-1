@@ -42,7 +42,7 @@
              <a data-target=".navbar-responsive-collapse" data-toggle="collapse" class="btn btn-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a> <a href="{{ URL }}/home/" class="brand">MeetPoint</a>
             <div class="nav-collapse collapse navbar-responsive-collapse">
               <ul class="nav">
-                <li {% block meetfriend %}{% endblock %}>
+                <li {% block meetfriend %}class="active"{% endblock %}>
                   <a href="{% url 'start_view' %}">Meet with friends</a>
                 </li>
                 <li {% block howto %}{% endblock %}>
