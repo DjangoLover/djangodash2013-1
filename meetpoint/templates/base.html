@@ -24,9 +24,9 @@
   <!--script src="{{ STATIC_URL }}/bootstrap/js/less-1.3.3.min.js"></script-->
   <!--append ‘#!watch’ to the browser URL, then refresh the page. -->
 
-  <link href="{{ STATIC_URL }}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="{{ STATIC_URL }}/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-  <link href="{{ STATIC_URL }}/bootstrap/css/style.css" rel="stylesheet">
+  {% css_asset_tag "bootstrap/css/bootstrap.min.css" %}
+  {% css_asset_tag "bootstrap/css/bootstrap-responsive.min.css" %}
+  {% css_asset_tag "bootstrap/css/style.css" %}
 
   <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
   <!--[if lt IE 9]>
@@ -40,9 +40,10 @@
   <link rel="apple-touch-icon-precomposed" href="{{ STATIC_URL }}/bootstrap/img/apple-touch-icon-57-precomposed.png">
   <link rel="shortcut icon" href="{{ STATIC_URL }}/bootstrap/img/favicon.png">
 
-  <script type="text/javascript" src="{{ STATIC_URL }}/bootstrap/js/jquery.min.js"></script>
-  <script type="text/javascript" src="{{ STATIC_URL }}/bootstrap/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="{{ STATIC_URL }}/bootstrap/js/scripts.js"></script>
+  {% js_asset_tag "bootstrap/js/jquery.min.js" %}
+  {% js_asset_tag "bootstrap/js/bootstrap.min.js" %}
+  {% js_asset_tag "bootstrap/js/scripts.js" %}
+
 </head>
 <body>
  <div class="container-fluid">
@@ -54,20 +55,27 @@
              <a data-target=".navbar-responsive-collapse" data-toggle="collapse" class="btn btn-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a> <a href="{{ URL }}/home/" class="brand">MeetPoint</a>
             <div class="nav-collapse collapse navbar-responsive-collapse">
               <ul class="nav">
-                <li class="active">
+                <li {% block meetfriend %}{% endblock %}>
                   <a href="{% url 'start_view' %}">Meet with friends</a>
                 </li>
-                <li>
+                <li {% block howto %}{% endblock %}>
                   <a href="{% url 'how_view' %}">How to use?</a>
                 </li>
               </ul>
               <ul class="nav pull-right">
-                <li class="divider-vertical">
-                  <a class="nav-link" href="{% url 'socialauth_begin' 'foursquare' %}" target="_self">LogIn</a>
-                </li>
-                <li class="divider-vertical">
-                  <a class="nav-link" href="{% url 'auth_logout' %}" target="_self">LogOut</a>
-                </li>
+                {% if user.is_authenticated %}
+                  <li class="divider-vertical">
+                    <a>{% firstof user.first_name user.email user.nickname %}</a>
+                  </li>
+                  <li class="divider-vertical">
+                    <a class="nav-link" href="{% url 'auth_logout' %}" target="_self">Logut</a>
+                  </li>
+                {% else %}
+                  <li class="divider-vertical">
+                    <a class="nav-link" href="{% url 'socialauth_begin' 'foursquare' %}" target="_self">Login</a>
+                  </li>
+                {% endif %}
+                
               </ul>
             </div>
 
