@@ -1,9 +1,9 @@
 {% load tz %}
-<div>
-Друг {{ friend.get_full_name }}<br>
-Координаты пользователя обновлялись <span class="last_update">{{ last_update }}</span><br>
-</div>
-<div style="display:none;" data-lat='{{ friend.latitude }}' data-lng='{{ friend.longitude }}' class="friend_coords"></div>
-{% for venue in venues %}
-  {{ venue.name }}<br>
-{% endfor %}
+{% if friend %}
+  <div>
+    Координаты пользователя обновлялись <span class="last_update">{{ last_update }}</span>
+  </div>
+  <div style="display:none;" data-lat='{{ friend.latitude }}' data-lng='{{ friend.longitude }}' class="friend_coords"></div>
+{% else %}
+  
+{% endif %}
