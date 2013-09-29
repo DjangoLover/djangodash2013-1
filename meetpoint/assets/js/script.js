@@ -1,6 +1,5 @@
-//= require libs/csrf.js
-//= require plugins/gmapi.js
-//= require plugins/gmaps.js
+//= require plugins/gmapi
+//= require plugins/gmaps
 //= require_self
 
 $(document).ready(function(){
@@ -19,6 +18,7 @@ $(document).ready(function(){
 
   GMaps.geolocate({
     success: function(position) {
+      console.log('success');
       map.setCenter(position.coords.latitude, position.coords.longitude);
       map.removeMarkers();
       map.addMarker({
