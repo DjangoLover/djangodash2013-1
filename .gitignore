@@ -35,5 +35,4 @@ nosetests.xml
 .pydevproject
 
 project/public/
-project/static/
 project/sqlite3.db
