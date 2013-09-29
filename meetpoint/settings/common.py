@@ -116,6 +116,16 @@ AUTHENTICATION_BACKENDS = (
 FOURSQUARE_CONSUMER_KEY = 'KTGUXWXERPLJVNPMPNYETRLBP4302KG2XSAWPFYKKMNO3RSY'
 FOURSQUARE_CONSUMER_SECRET = 'OWZCDVTG1X3BEVDBYMMPOTBURRRP3ENU1SIQDMH1VLCE2TGI'
 
+SOCIAL_AUTH_PIPELINE = (
+    'social_auth.backends.pipeline.social.social_auth_user',
+    'social_auth.backends.pipeline.user.get_username',
+    'social_auth.backends.pipeline.user.create_user',
+    'social_auth.backends.pipeline.social.associate_user',
+    'social_auth.backends.pipeline.social.load_extra_data',
+    'social_auth.backends.pipeline.user.update_user_details',
+    'profile.social_pipeline.update_account',
+)
+
 LOGIN_REDIRECT_URL = '/start/'
 SOCIAL_AUTH_USER_MODEL = 'profile.Profile'
 AUTH_USER_MODEL = 'profile.Profile'

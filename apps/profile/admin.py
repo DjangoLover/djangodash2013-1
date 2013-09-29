@@ -5,6 +5,6 @@ from .models import Profile
 
 class ProfileAdmin(admin.ModelAdmin):
 
-    pass
+    readonly_fields = ['latitude', 'longitude', 'fs_id']
 
 admin.site.register(Profile, ProfileAdmin)

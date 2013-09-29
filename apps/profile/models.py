@@ -19,3 +19,7 @@ class Profile(AbstractUser):
         blank=True,
         null=True
     )
+    fs_id = models.PositiveIntegerField(
+        blank=True,
+        null=True
+    )
