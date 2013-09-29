@@ -1,6 +1,7 @@
+{% load tz %}
 <div>
 Друг {{ friend.get_full_name }}<br>
-Координаты пользователя обновлялись {{ friend.last_update }}<br>
+Координаты пользователя обновлялись <span class="last_update">{{ last_update }}</span><br>
 </div>
 <div style="display:none;" data-lat='{{ friend.lat }}' data-lng='{{ friend.lng }}'></div>
 {% for venue in venues %}

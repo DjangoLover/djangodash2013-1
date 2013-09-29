@@ -69,6 +69,7 @@ class VenueView(TemplateView, SocialUserMixin):
         context = super(VenueView, self).get_context_data(**kwargs)
         context['venues'] = self.get_venues()
         context['friend'] = self.friend
+        context['last_update'] = self.prepare_date_list(self.friend)
         return context
 
     def get_venues(self):
@@ -76,7 +77,6 @@ class VenueView(TemplateView, SocialUserMixin):
         self.friend = get_object_or_none(Profile, fs_id=friend_pk)
         if self.friend:
             coords = "{0},{1}".format(self.friend.latitude, self.friend.longitude)
-            print coords
         user_lat = self.request.POST.get('lat', False)
         user_lng = self.request.POST.get('lng', False)
         if user_lat and user_lng and self.token:
@@ -87,6 +87,18 @@ class VenueView(TemplateView, SocialUserMixin):
                                           })
             return venues['venues']
         return None
+
+    def prepare_date_list(self, friend):
+        date = friend.last_update
+        date_list = [
+            date.year,
+            date.month,
+            date.day,
+            date.hour,
+            date.minute,
+            date.second
+        ]
+        return date_list
 
 
 def update_profile(request):

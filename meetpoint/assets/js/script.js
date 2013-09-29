@@ -1,8 +1,19 @@
 //= require plugins/gmapi
 //= require plugins/gmaps
+//= require plugins/moment.min
+//= require plugins/moment-timezone.min
+//= require plugins/moment-timezone-data
 //= require_self
 
 $(document).ready(function(){
+
+  function local_time() {
+    $dates_string = $('.last_update').html();
+    $date_list = JSON.parse($dates_string);
+    $last_update = moment.utc($date_list).local();
+    $last_update_formatted = $last_update.format("MMMM Do YYYY, H:mm");
+    $('.last_update').html($last_update_formatted.toString());
+  }
 
   map = new GMaps({
     div: '#map',
@@ -51,6 +62,7 @@ $(document).ready(function(){
       url: $(this).attr('href'),
       success: function(data){
         $('.block_main').html(data);
+        local_time();
       }
     });
     return false;
