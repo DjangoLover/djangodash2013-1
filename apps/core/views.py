@@ -80,6 +80,12 @@ class VenueView(TemplateView, SocialUserMixin):
             venues = client.venues.search(params={
                                           'll': coords,
                                           })
+
+            if self.request.GET.get('unvisited', None):
+                for venue, data in venues.items():
+                    if data.get('beenHere', None):
+                        del venues[venue]
+
             return venues['venues']
         return None
 
