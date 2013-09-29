@@ -1,10 +1,12 @@
 {% load tz %}
 {% if friend %}
   <div>
-    Your point of meeting<span class="last_update">{{ last_update }}</span>
+    Your point of meeting:
   </div>
   <span>{{ venue.name }}</span>
   <span>{{ venue.address }}</span>
+  <span class="last_update">{{ last_update }}</span>
+
   <div style="display:none;" data-lat='{{ friend.latitude }}' data-lng='{{ friend.longitude }}' class="friend_coords"></div>
   <div style="display:none;" data-lat='{{ venue.latitude }}' data-lng='{{ venue.longitude }}' class="venue_coords"></div>
 {% else %}
