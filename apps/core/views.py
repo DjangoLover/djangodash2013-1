@@ -73,19 +73,27 @@ class VenueView(TemplateView, SocialUserMixin):
         return context
 
     def get_venues(self):
-        friend_pk = self.kwargs['pk']
-        self.friend = get_object_or_none(Profile, fs_id=friend_pk)
-        if self.friend:
-            coords = "{0},{1}".format(self.friend.latitude, self.friend.longitude)
-        user_lat = self.request.POST.get('lat', False)
-        user_lng = self.request.POST.get('lng', False)
-        if user_lat and user_lng and self.token:
-            coords = "{0},{1}".format(user_lat, user_lng)
+        center = self.get_center()
+        if self.token and center:
+            coords = "{0},{1}".format(center[0], center[1])
             client = foursquare.Foursquare(access_token=self.token)
             venues = client.venues.search(params={
                                           'll': coords,
                                           })
             return venues['venues']
+        return None
+
+    def get_center(self):
+        user_lat = self.request.POST.get('lat', False)
+        user_lng = self.request.POST.get('lng', False)
+        friend_pk = self.kwargs['pk']
+        self.friend = get_object_or_none(Profile, fs_id=friend_pk)
+        if self.friend:
+            friend_lat = self.friend.latitude
+            friend_lng = self.friend.longitude
+            center_lat = ((friend_lat - user_lat) / 2) + min(friend_lat, user_lat)
+            center_lng = ((friend_lng - user_lng) / 2) + min(friend_lng, user_lng)
+            return [center_lat, center_lng]
         return None
 
     def prepare_date_list(self, friend):
