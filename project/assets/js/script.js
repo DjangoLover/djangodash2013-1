@@ -22,7 +22,7 @@ $(document).ready(function(){
     lat: -12.043333,
     lng: -77.028333,
     height: '400px',
-    zoom: 12,
+    zoom: 15,
     zoomControlOptions: {
       style: google.maps.ZoomControlStyle.SMALL
     },
@@ -84,6 +84,7 @@ $(document).ready(function(){
           icon: $image,
           title: 'Meet point'
         });
+        map.fitZoom();
       }
     });
     return false;
