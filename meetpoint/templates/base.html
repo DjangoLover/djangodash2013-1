@@ -51,14 +51,14 @@
       <div class="navbar">
         <div class="navbar-inner">
           <div class="container-fluid">
-             <a data-target=".navbar-responsive-collapse" data-toggle="collapse" class="btn btn-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a> <a href="#" class="brand">MeetPoint</a>
+             <a data-target=".navbar-responsive-collapse" data-toggle="collapse" class="btn btn-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a> <a href="{{ URL }}/home/" class="brand">MeetPoint</a>
             <div class="nav-collapse collapse navbar-responsive-collapse">
               <ul class="nav">
                 <li class="active">
-                  <a href="#">Meet with friends</a>
+                  <a href="{{ URL }}/base/">Meet with friends</a>
                 </li>
                 <li>
-                  <a href="#">How to use?</a>
+                  <a href="{{ URL }}/how/">How to use?</a>
                 </li>
               </ul>
               <ul class="nav pull-right">
@@ -86,9 +86,10 @@
       <div class="row">
         <div class="login-form">
           <div class="text-center">
-            <h2>Choice friend</h2>
+            <h2>Choose friend</h2>
           </div>
           <form action="">
+            <div class="block_main"></div>
             {% for friend in friends %}
             <div class="span2">
               <div class="list-group">
@@ -99,6 +100,7 @@
               </div>
             </div>
             {% endfor %}
+            <div>
           </form>
         </div>
       </div>

@@ -6,6 +6,8 @@ from social_auth.models import UserSocialAuth
 
 from .shortcuts import get_object_or_none
 
+from django.shortcuts import render, redirect
+
 from profile.models import Profile
 
 import foursquare
