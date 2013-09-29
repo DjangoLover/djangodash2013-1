@@ -29,6 +29,38 @@
   -webkit-transition: all 500ms ease;
   -o-transition: all 500ms ease;
   transition: all 500ms ease;
-  color: white;.
+  color: white;
+}
 
+.friend_img {
+  margin-bottom:7px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+
+}
+
+.friend_img:hover {
+  -webkit-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+  transition: all 500ms ease;
+  -webkit-box-shadow:
+      0 0 20px rgba(0,0,0,.6),
+      inset 0 0 20px rgba(0,0,0,1);
+  -moz-box-shadow:
+      0 0 20px rgba(0,0,0,.6),
+      inset 0 0 20px rgba(0,0,0,1);
+  box-shadow:
+      0 0 20px rgba(0,0,0,.6),
+      inset 0 0 20px rgba(0,0,0,1);
+}
+
+.friend_name {
+  color: #333;
+  margin-top:10px;
+  width: 100px;
+}
+
+.friend {
+  text-decoration: none!important;
 }
