@@ -99,9 +99,10 @@ class VenueView(TemplateView, SocialUserMixin):
             user_lng = float(user_lng)
             friend_lat = float(self.friend.latitude)
             friend_lng = float(self.friend.longitude)
-            center_lat = ((friend_lat - user_lat) / 2) + min(friend_lat, user_lat)
-            center_lng = ((friend_lng - user_lng) / 2) + min(friend_lng, user_lng)
-            return [center_lat, center_lng]
+            if user_lat != friend_lat and user_lng != friend_lng:
+                center_lat = ((friend_lat - user_lat) / 2) + min(friend_lat, user_lat)
+                center_lng = ((friend_lng - user_lng) / 2) + min(friend_lng, user_lng)
+                return [center_lat, center_lng]
         return None
 
     def prepare_date_list(self, friend):
