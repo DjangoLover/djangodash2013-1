@@ -22,6 +22,7 @@ $(document).ready(function(){
     lat: -12.043333,
     lng: -77.028333,
     height: '400px',
+    zoom: 12
   });
 
   map.addMarker({
@@ -38,7 +39,6 @@ $(document).ready(function(){
         lat: position.coords.latitude,
         lng: position.coords.longitude,
         draggable: true,
-        clickable: true
       });
       $("#status").load('/record/', {
         lat: position.coords.latitude,
@@ -66,12 +66,17 @@ $(document).ready(function(){
       success: function(data){
         $('.block_main').html(data);
         $friend = $('.block_main .friend_coords');
+        $venue = $('.block_main .venue_coords');
+        $image = '/static/img/star.png';
         local_time();
         map.addMarker({
           lat: $friend.data("lat"),
           lng: $friend.data("lng"),
-          draggable: true,
-          clickable: true
+        });
+        map.addMarker({
+          lat: $venue.data("lat"),
+          lng: $venue.data("lng"),
+          icon: $image
         });
       }
     });

@@ -83,16 +83,16 @@
           </div>
         {% else %}
         <div class="login-form">
-          {% if friends %}
-            <div class="text-center">
-              <h2>Choose a friend</h2>
-            </div>
-          {% else %}
-            <div class="text-center">
-              <h2>You have not friend yet</h2>
-            </div>
-          {% endif %}
           <div class="block_main">
+            {% if friends %}
+              <div class="text-center">
+                <h2>Choose a friend</h2>
+              </div>
+            {% else %}
+              <div class="text-center">
+                <h2>You have not friend yet</h2>
+              </div>
+            {% endif %}
             {% for friend in friends %}
             <div class="span2">
               <div class="list-group">

@@ -1,9 +1,13 @@
 {% load tz %}
 {% if friend %}
   <div>
-    Координаты пользователя обновлялись <span class="last_update">{{ last_update }}</span>
+    The coordinates of your friend have been updated <span class="last_update">{{ last_update }}</span>
   </div>
   <div style="display:none;" data-lat='{{ friend.latitude }}' data-lng='{{ friend.longitude }}' class="friend_coords"></div>
+  <div style="display:none;" data-lat='{{ venue.latitude }}' data-lng='{{ venue.longitude }}' class="friend_coords"></div>
 {% else %}
-  
+  <div class="text-center">
+    <h2>Your friend has not yet been coming to our site. You can invite him, handing him the link to our website.</h2>
+  </div>
 {% endif %}
+<div>
