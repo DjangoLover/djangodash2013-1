@@ -51,18 +51,17 @@
               </ul>
               <ul class="nav pull-right">
                 {% if user.is_authenticated %}
-                  <li class="divider-vertical">
+                  <li>
                     <a>{% firstof user.first_name user.email user.nickname %}</a>
                   </li>
-                  <li class="divider-vertical">
+                  <li>
                     <a class="nav-link" href="{% url 'auth_logout' %}" target="_self">Logut</a>
                   </li>
                 {% else %}
-                  <li class="divider-vertical">
+                  <li>
                     <a class="nav-link" href="{% url 'socialauth_begin' 'foursquare' %}" target="_self">Login</a>
                   </li>
                 {% endif %}
-
               </ul>
             </div>
 
