@@ -1,0 +1,9 @@
+{
+  "files": {
+    "js/script.js": "js/script.0066b2fa34f276529110b8952cdf37f632008507.js", 
+    "js/libs/ie6no.ru.js": "js/libs/ie6no.ru.049806ea38c70651064ab52c743494483dbb994b.js", 
+    "js/libs/modernizr-2.6.2.min.js": "js/libs/modernizr-2.6.2.min.ea1c3a6222b32701f3ae24290afe16238cef396a.js", 
+    "js/libs/csrf.js": "js/libs/csrf.27b60123b616c8235e51eebb890e0695a879e5f4.js", 
+    "js/libs/jquery-1.9.1.min.js": "js/libs/jquery-1.9.1.min.e25ca3eb30612827b24ae5efa23e93ec5f1ba5e7.js"
+  }
+}

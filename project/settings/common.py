@@ -131,10 +131,10 @@ LOGIN_REDIRECT_URL = '/start/'
 SOCIAL_AUTH_USER_MODEL = 'profile.Profile'
 AUTH_USER_MODEL = 'profile.Profile'
 
-ROOT_URLCONF = 'meetpoint.urls'
+ROOT_URLCONF = 'project.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'meetpoint.wsgi.application'
+WSGI_APPLICATION = 'project.wsgi.application'
 
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_ROOT, 'templates'),
