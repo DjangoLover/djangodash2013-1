@@ -106,17 +106,18 @@ class VenueView(TemplateView, SocialUserMixin):
         return None
 
     def prepare_date_list(self, friend):
-        date = friend.last_update
-        date_list = [
-            date.year,
-            date.month,
-            date.day,
-            date.hour,
-            date.minute,
-            date.second
-        ]
-        return date_list
-
+        if friend:
+            date = friend.last_update
+            date_list = [
+                date.year,
+                date.month,
+                date.day,
+                date.hour,
+                date.minute,
+                date.second
+            ]
+            return date_list
+        return []
 
 def update_profile(request):
     lat = request.POST.get('lat', False)
