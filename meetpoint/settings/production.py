@@ -16,6 +16,6 @@ TEMPLATE_LOADERS = (
     ('django.template.loaders.cached.Loader', TEMPLATE_LOADERS),
 )
 
-# ALLOWED_HOSTS = ['192.241.165.151']
+ALLOWED_HOSTS = ['192.241.166.76']
 
 PREPEND_WWW = True
