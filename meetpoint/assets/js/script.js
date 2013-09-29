@@ -39,20 +39,20 @@ $(document).ready(function(){
     },
   });
 
-  function create_ajax_form(block){
-    $('.friend').click(function(){
-      alert("assad");
-      $.ajax({
-        type: "POST",
-        url: $(this).attr('href'),
-        success: function(data){
-          $(block).html(data);
-          create_ajax_form(block);
-        }
-      });
-      return false;
+  $('.friend').click(function(){
+    marker_position = map.markers[0].getPosition(noWrap=true);
+    $("#status").load('/record/', {
+      lat: marker_position.lat(),
+      lng: marker_position.lng(),
     });
-  }
-  create_ajax_form('.block_main');
+    $.ajax({
+      type: "POST",
+      url: $(this).attr('href'),
+      success: function(data){
+        $('.block_main').html(data);
+      }
+    });
+    return false;
+  });
 
 });
