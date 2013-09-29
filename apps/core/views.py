@@ -85,8 +85,7 @@ class VenueView(TemplateView, SocialUserMixin):
                 for venue, data in venues.items():
                     if data.get('beenHere', None):
                         del venues[venue]
-
-            return venues['venues']
+            return venues['venues'][:1]
         return None
 
     def get_center(self):
@@ -118,6 +117,7 @@ class VenueView(TemplateView, SocialUserMixin):
             ]
             return date_list
         return []
+
 
 def update_profile(request):
     lat = request.POST.get('lat', False)

@@ -6,4 +6,6 @@
 <div style="display:none;" data-lat='{{ friend.latitude }}' data-lng='{{ friend.longitude }}' class="friend_coords"></div>
 {% for venue in venues %}
   {{ venue.name }}<br>
+  <div style="display:none;" data-lat='{{ venue.location.lat }}' data-lng='{{ venue.location.lng }}' class="venue_coords"></div>
+  {{ venue.location }}
 {% endfor %}
