@@ -1,9 +1,16 @@
 {
   "files": {
-    "js/script.js": "js/script.0066b2fa34f276529110b8952cdf37f632008507.js", 
+    "bootstrap/img/glyphicons-halflings-white.png": "bootstrap/img/glyphicons-halflings-white.a25c4705320fd63c33790e666872910e702b9bf6.png", 
+    "bootstrap/img/apple-touch-icon-144-precomposed.png": "bootstrap/img/apple-touch-icon-144-precomposed.a460240b0ebfd72766d7de3846d7cff2a2408444.png", 
     "js/libs/ie6no.ru.js": "js/libs/ie6no.ru.049806ea38c70651064ab52c743494483dbb994b.js", 
     "js/libs/modernizr-2.6.2.min.js": "js/libs/modernizr-2.6.2.min.ea1c3a6222b32701f3ae24290afe16238cef396a.js", 
+    "bootstrap/img/glyphicons-halflings.png": "bootstrap/img/glyphicons-halflings.84f613631b07d4fe22acbab50e551c0fe04bd78b.png", 
+    "bootstrap/img/apple-touch-icon-114-precomposed.png": "bootstrap/img/apple-touch-icon-114-precomposed.696b638598dd8b5bbc5142c578099a780b241bdd.png", 
+    "js/libs/jquery-1.9.1.min.js": "js/libs/jquery-1.9.1.min.e25ca3eb30612827b24ae5efa23e93ec5f1ba5e7.js", 
+    "js/script.js": "js/script.48d565a6b5afb895b6e7b2b0730ad333672f2348.js", 
     "js/libs/csrf.js": "js/libs/csrf.27b60123b616c8235e51eebb890e0695a879e5f4.js", 
-    "js/libs/jquery-1.9.1.min.js": "js/libs/jquery-1.9.1.min.e25ca3eb30612827b24ae5efa23e93ec5f1ba5e7.js"
+    "bootstrap/img/favicon.png": "bootstrap/img/favicon.0199a2a437393ade12fe223398ff6c2d23805825.png", 
+    "bootstrap/img/apple-touch-icon-57-precomposed.png": "bootstrap/img/apple-touch-icon-57-precomposed.2d7ed22bee6e48ac70a15d2b8fc95e485e362715.png", 
+    "bootstrap/img/apple-touch-icon-72-precomposed.png": "bootstrap/img/apple-touch-icon-72-precomposed.462a5b9713a2e25053c7f68d4bf65ff33660cbbf.png"
   }
 }
