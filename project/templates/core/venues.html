@@ -2,13 +2,15 @@
 {% if friend %}\
   <div class="container">
   <div class="text-center">
-    <h2>Your point of meeting:</h2>
+    <h2>Your point of meeting with {{ friend.get_full_name }}:</h2>
   </div>
   </div>
-  <span>{{ venue.name }}</span>
   <span>{{ venue.address }}</span>
-  <span class="last_update">{{ last_update }}</span>
-
+  <div class="well well-small text-center" style="margin-top:10px;">
+    <h4>{{ venue.name }}</h4>
+    <h6>Address: {{ venue.location.address }}</h6>
+  </div>
+  <div class="text-center">Coordinates of your friend was updated at <span class="last_update">{{ last_update }}</span></div>
   <div style="display:none;" data-lat='{{ friend.latitude }}' data-lng='{{ friend.longitude }}' class="friend_coords"></div>
   <div style="display:none;" data-lat='{{ venue.location.lat }}' data-lng='{{ venue.location.lng }}' class="venue_coords"></div>
 {% else %}
