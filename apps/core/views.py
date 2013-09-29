@@ -112,8 +112,10 @@ class VenueView(TemplateView, SocialUserMixin):
             friend_lat = float(self.friend.latitude)
             friend_lng = float(self.friend.longitude)
             if user_lat != friend_lat and user_lng != friend_lng:
-                center_lat = (math.fabs(friend_lat - user_lat) / 2) + min(friend_lat, user_lat)
-                center_lng = (math.fabs(friend_lng - user_lng) / 2) + min(friend_lng, user_lng)
+                diff1 = math.fabs(friend_lat - user_lat) / 2
+                diff2 = math.fabs(friend_lng - user_lng) / 2
+                center_lat = diff1 + min(friend_lat, user_lat)
+                center_lng = diff2 + min(friend_lng, user_lng)
                 return [center_lat, center_lng]
         return None
 
@@ -122,7 +124,7 @@ class VenueView(TemplateView, SocialUserMixin):
             date = friend.last_update
             date_list = [
                 date.year,
-                date.month,
+                date.month - 1,
                 date.day,
                 date.hour,
                 date.minute,
