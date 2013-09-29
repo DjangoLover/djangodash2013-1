@@ -47,6 +47,7 @@ $(document).ready(function(){
     });
     $.ajax({
       type: "POST",
+      data: {lat: marker_position.lat(), lng: marker_position.lng()},
       url: $(this).attr('href'),
       success: function(data){
         $('.block_main').html(data);

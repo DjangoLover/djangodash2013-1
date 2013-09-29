@@ -28,7 +28,6 @@ class SocialUserMixin(object):
 
         if access_token is None and social_user:
             if social_user.extra_data:
-                print social_user.extra_data
                 access_token = social_user.extra_data.get('access_token')
                 expires = social_user.extra_data.get('expires')
 
@@ -71,30 +70,11 @@ class VenueView(TemplateView, SocialUserMixin):
         context['venues'] = self.get_venues()
         return context
 
-    # def get_access_token(self, user):
-    #     key = str(user.id)
-    #     access_token = cache.get(key)
-
-    #     try:
-    #         social_user = user.social_user if hasattr(user, 'social_user') \
-    #             else UserSocialAuth.objects.get(user=user.id,
-    #                                             provider='foursquare')
-    #     except UserSocialAuth.DoesNotExist:
-    #         social_user = None
-
-    #     if access_token is None and social_user:
-    #         if social_user.extra_data:
-    #             access_token = social_user.extra_data.get('access_token')
-    #             expires = social_user.extra_data.get('expires')
-
-    #             cache.set(key, access_token,
-    #                       int(expires) if expires is not None else 0)
-    #     self.token = access_token
-
     def get_venues(self):
-        coords = "{0},{1}".format(self.request.user.latitude,
-                                  self.request.user.longitude)
-        if self.token:
+        lat = self.request.POST.get('lat', False)
+        lng = self.request.POST.get('lng', False)
+        if lat and lng and self.token:
+            coords = "{0},{1}".format(lat, lng)
             client = foursquare.Foursquare(access_token=self.token)
             venues = client.venues.search(params={
                                           'll': coords,
