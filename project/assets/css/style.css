@@ -5,3 +5,30 @@
 #map img {
   max-width: none;
 }
+
+.start_button {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 5px 15px;
+  border-radius: 5px;
+  background-color: #5C5C5C;
+  -webkit-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+  transition: all 500ms ease;
+  font-family: Noto Serif, sans-serif;
+  color: white;
+  font-size: 17px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-shadow: rgba(0, 0, 0, 0.10) 0px 2px 0px;
+}
+.start_button:hover {
+  text-decoration: none!important;
+  background-color: #9CC787;
+  -webkit-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+  transition: all 500ms ease;
+  color: white;.
+
+}
