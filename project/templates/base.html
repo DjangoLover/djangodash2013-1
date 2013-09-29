@@ -89,6 +89,9 @@
 {% block map %}
   <div id="map"></div>
 {% endblock map %}
+{% block confirm_your_location %}
+  <a class="btn btn-primary btn-large" href="">Confirm your location</a>
+{% endblock confirm_your_location %}
 {% block content %}
  <div id='status'></div>
  <div class="container">
@@ -105,11 +108,11 @@
           </div>
           <div class="block_main">
             {% for friend in friends %}
-            <div class="span2 ">
+            <div class="span2">
               <div class="list-group">
                 <a href="{% url 'venues_view' friend.id %}" class="friend" class="list-group-item active">
-                <img src="{{ friend.photo.prefix }}64x64{{ friend.photo.suffix }}">
-                <p class="list-group-item-text">{{ friend.firstName }} {{ friend.lastName }}</p>
+                <img src="{{ friend.photo.prefix }}360x360{{ friend.photo.suffix }}">
+                 <span class="list-group-item-text">{{ friend.firstName }} {{ friend.lastName }}</span>
                 </a>
               </div>
             </div>
