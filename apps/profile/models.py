@@ -9,13 +9,13 @@ class Profile(AbstractUser):
     )
     latitude = models.DecimalField(
         max_digits=5,
-        decimal_places=2,
+        decimal_places=6,
         blank=True,
         null=True
     )
     longitude = models.DecimalField(
         max_digits=5,
-        decimal_places=2,
+        decimal_places=6,
         blank=True,
         null=True
     )
