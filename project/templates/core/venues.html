@@ -8,7 +8,7 @@
   <span class="last_update">{{ last_update }}</span>
 
   <div style="display:none;" data-lat='{{ friend.latitude }}' data-lng='{{ friend.longitude }}' class="friend_coords"></div>
-  <div style="display:none;" data-lat='{{ venue.latitude }}' data-lng='{{ venue.longitude }}' class="venue_coords"></div>
+  <div style="display:none;" data-lat='{{ venue.location.lat }}' data-lng='{{ venue.location.lng }}' class="venue_coords"></div>
 {% else %}
   <div class="text-center">
     <h2>Your friend has not yet been coming to our site. You can invite him, handing him the link to our website.</h2>
